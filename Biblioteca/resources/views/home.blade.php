@@ -1,51 +1,58 @@
 @extends('layouts.app')
 
-@section('title', 'Página Inicial')
+@section('title', 'Dashboard')
 
 @section('content')
-<div class="card">
-    <div class="card-header bg-primary text-white">
-        <h3 class="card-title">Sistema de Biblioteca</h3>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>📚 Dashboard - Sistema de Biblioteca</h2>
+</div>
+
+@if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Livros</h5>
-                        <p class="card-text">Gerencie o acervo</p>
-                        <a href="{{ route('books.index') }}" class="btn btn-primary">Acessar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Autores</h5>
-                        <p class="card-text">Gerencie autores</p>
-                        <a href="{{ route('authors.index') }}" class="btn btn-success">Acessar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Categorias</h5>
-                        <p class="card-text">Gerencie categorias</p>
-                        <a href="{{ route('categories.index') }}" class="btn btn-info">Acessar</a>
-                    </div>
-                </div>
+@endif
+
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card text-center border-0">
+            <div class="card-body">
+                <i class="fas fa-book fa-3x mb-3"></i>
+                <h5 class="card-title">Livros</h5>
+                <p class="card-text">Gerencie o acervo de livros</p>
+                <a href="{{ route('books.index') }}" class="btn btn-primary">
+                    <i class="fas fa-list"></i> Ver Livros
+                </a>
             </div>
         </div>
-
-        <div class="mt-4">
-            <h4>Funcionalidades do Sistema:</h4>
-            <ul>
-                <li>Cadastro de Livros, Autores e Categorias</li>
-                <li>Controle completo do acervo</li>
-                <li>Relatórios e consultas</li>
-            </ul>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card text-center border-0">
+            <div class="card-body">
+                <i class="fas fa-user fa-3x mb-3"></i>
+                <h5 class="card-title">Autores</h5>
+                <p class="card-text">Gerencie os autores</p>
+                <a href="{{ route('authors.index') }}" class="btn btn-success">
+                    <i class="fas fa-list"></i> Ver Autores
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card text-center border-0">
+            <div class="card-body">
+                <i class="fas fa-tags fa-3x mb-3"></i>
+                <h5 class="card-title">Categorias</h5>
+                <p class="card-text">Gerencie as categorias</p>
+                <a href="{{ route('categories.index') }}" class="btn btn-info">
+                    <i class="fas fa-list"></i> Ver Categorias
+                </a>
+            </div>
         </div>
     </div>
 </div>
+
 @endsection
